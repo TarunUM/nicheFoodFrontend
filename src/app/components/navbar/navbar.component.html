@@ -1,41 +1,20 @@
-<nav class="flex justify-between py-4 rounded-b-xl bg-gray-950 bg-opacity-50 ">
+<nav class="flex flex-row justify-between gap-4 py-2 rounded-b-xl bg-stone-900 text-xl">
 
-    <div class="font-bold text-4xl mx-4 px-4">
+    <section class="mx-2 col-span-1 basis-1/3 flex justify-start gap-4">
+        <app-buttons name="Home" variant="ghost" routerLink=""></app-buttons>
+        <app-buttons name="Menu" variant="ghost" routerLink="menu"></app-buttons>
+        <app-buttons name="About" variant="ghost" routerLink="about"></app-buttons>
+        <app-buttons name="Contact" variant="ghost" routerLink="contact"></app-buttons>
+    </section>
+
+    <div class="font-bold text-4xl col-span-1 basis-1/3 flex justify-center hover:cursor-pointer font-serif" routerLink="">
         NicheFood
     </div>
 
-
-    <section class="flex gap-4">
-        <button routerLink=""
-                class="font-bold text-xl rounded-lg px-4 hover:bg-fuchsia-100 hover:text-slate-900 transition duration-150 transform hover:scale-125 ease-in"
-        >
-            home
-        </button>
-        <button routerLink="Menu"
-                class="font-bold text-xl rounded-lg px-4 hover:bg-fuchsia-100 hover:text-slate-900 transition duration-150 transform hover:scale-125 ease-in"
-        >
-            Menu
-        </button>
-        <button routerLink="About"
-                class="font-bold text-xl rounded-lg px-4 hover:bg-fuchsia-100 hover:text-slate-900 transition duration-150 transform hover:scale-125 ease-in"
-        >
-            About
-        </button>
-        <button routerLink="Contact"
-                class="font-bold text-xl rounded-lg px-4 hover:bg-fuchsia-100 hover:text-slate-900 transition duration-150 transform hover:scale-125 ease-in"
-        >
-            Contact
-        </button>
-    </section>
-
-
-    <button *ngIf="true; else elseBlock "
-            class="font-bold text-xl rounded-xl mx-4 px-4 hover:bg-white hover:text-slate-900 transition duration-150 hover:animate-pulse "
-            routerLink="auth"
-    >
-        login/signUp
-    </button>
-    <ng-template  #elseBlock>
-        <button class="font-bold text-xl rounded-lg mx-4 px-4 hover:bg-white hover:text-bl9ck transition duration-150 hover:animate-pulse basis-1/3">logout</button>
-    </ng-template>
+    <div class="col-span-1 basis-1/3 flex justify-end mx-2">
+        <app-buttons *ngIf="true; else elseBlock" name="Account" variant="ghost" (click)="openModal($event)"></app-buttons>
+        <ng-template #elseBlock>
+            <app-buttons name="Logout" variant="ghost"></app-buttons>
+        </ng-template>
+    </div>
 </nav>

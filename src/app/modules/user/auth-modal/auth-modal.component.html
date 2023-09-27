@@ -1,1 +1,12 @@
-<p>auth-modal works!</p>
+<app-modal modalId="auth">
+    <p class="underline underline-offset-4 font-bold text-xl text-center pb-2">Your Account</p>
+
+    <app-tabs-container>
+        <app-tabs tabTitle="Login">
+            <app-login></app-login>
+        </app-tabs>
+        <app-tabs tabTitle="Register">
+            <app-register></app-register>
+        </app-tabs>
+    </app-tabs-container>
+</app-modal>

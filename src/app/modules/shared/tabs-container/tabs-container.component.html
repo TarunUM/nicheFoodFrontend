@@ -1,0 +1,19 @@
+<div>
+  <div class="flex justify-evenly gap-4 py-2">
+
+    <app-buttons
+      *ngFor="let tab of tabs"
+      class="w-full transform translate duration-300 "
+      variant="tabs"
+      [name]="tab.tabTitle"
+      (click)="selectTab(tab)"
+      [ngClass]="{
+      'bg-white text-black ':tab.active,
+      'hover:bg-white hover:text-black bg-black text-white':!tab.active
+      }"
+    />
+
+  </div>
+  <ng-content></ng-content>
+</div>
+
