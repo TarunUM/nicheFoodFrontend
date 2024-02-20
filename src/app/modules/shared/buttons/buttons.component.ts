@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class ButtonsComponent {
   @Input() name = 'Submit';
   @Input() variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'slate' | 'tabs'= 'primary';
+  @Input() isDisabled = false;
 
   private buttonClassMap: {[key: string]: string} = {
     primary: 'bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded',

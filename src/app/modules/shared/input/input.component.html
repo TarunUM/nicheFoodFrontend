@@ -1,6 +1,33 @@
-<div class="flex flex-col py-2">
+<div class="flex flex-col ">
     <label class="basis-2/5 pb-1">
         {{name}}
     </label>
-    <input class=" basis-4/5 rounded w-full text-black font-bold px-2 text-lg" [type]="inputType" [placeholder]="placeholder" [mask]="format">
+    <input
+      class=" basis-4/5 rounded w-full text-black font-bold px-2 text-lg"
+      [type]="inputType"
+      [placeholder]="placeholder"
+      [mask]="format"
+      [formControl]="formName"
+      [name]="name"
+    >
+    <!-- Errors -->
+    <ng-template #error [ngIf]="formName.errors && formName.touched && formName.invalid && formName.dirty">
+
+        <p *ngIf="formName.errors?.['required']" class="text-red-500">
+            {{name}} is required
+        </p>
+
+        <p *ngIf="formName.errors?.['minlength']" class="text-red-500">
+            Invalid name, minimum required {{ formName.errors['minlength']?.['requiredLength'] }} characters
+        </p>
+
+        <p *ngIf="formName.errors?.['pattern']" class="text-red-500">
+            type valid {{ name }}
+        </p>
+
+        <p *ngIf="formName.errors?.['maxlength']" class="text-red-500">
+            Invalid {{ name }}, maximum required {{ formName.errors['maxlength']?.['requiredLength'] }} characters
+        </p>
+    </ng-template>
+
 </div>

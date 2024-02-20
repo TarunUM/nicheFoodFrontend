@@ -1,6 +1,27 @@
 <p class="text-center text-lg font-bold">Login into your Account</p>
-<div class="grid grid-cols gap-4">
-    <app-input name="Email" inputType="email" placeholder="Email"></app-input>
-    <app-input name="Password" inputType="password" placeholder="******"></app-input>
-    <button class="w-6/12 ring-1 ring-white py-1 hover:bg-white hover:text-black transition duration-100 rounded">Login</button>
-</div>
+<form class="grid grid-cols gap-1" #loginForm="ngForm" (ngSubmit)="login()">
+    <label for="email">
+        email
+    </label>
+    <input
+      class="rounded w-full text-black font-bold px-2 text-lg mb-2"
+      type="email" name="email" id="email"
+      [(ngModel)]="credentials.email"
+      required
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+    >
+
+    <label for="password">
+        password
+    </label>
+    <input
+      class="rounded w-full text-black font-bold px-2 text-lg mb-2"
+      type="password" name="password" id="password"
+      [(ngModel)]="credentials.password"
+      required
+    >
+    <app-buttons variant="outline" name="Login" class="w-6/12" />
+    <p>
+        {{loginForm.valid}}
+    </p>
+</form>

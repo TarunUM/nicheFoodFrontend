@@ -1,0 +1,75 @@
+<section class="px-8 py-4 bg-stone-400 bg-opacity-20 relative">
+
+  <!--  Carousel of Menus to Explore  -->
+  <div class="text-center">
+    <h1>Carousel of Menus to Explore</h1>
+  </div>
+
+  <!-- Filter Section -->
+  <section class="bg-stone-900 px-5">
+    <div class="flex justify-between text-black py-2">
+      <p class="font-extrabold text-2xl text-white">Top Foods</p>
+      <app-buttons variant="secondary" name="Filter" (click)="toggleFilter()"/>
+      <select class="px-2 h-6 bg-white">
+        <option value="all">Relevance</option>
+        <option value="breakfast">Low to High</option>
+        <option value="lunch">High to Low</option>
+      </select>
+    </div>
+  </section>
+
+  <hr class="my-2">
+
+  <!-- Filter Section TODO: Better Go with the Modal component -->
+  <app-modal></app-modal>
+    <div *ngIf="showFilter" class="bg-stone-900 bg-opacity-100 p-2 rounded-xl h-fit sticky top-20">
+      <div class="flex justify-between">
+        <p class="font-extrabold text-2xl text-white">Filters</p>
+        <app-buttons name="clear filter" variant="outline" (click)="toggleFilter()"/>
+        <!--      <app-buttons name="X" variant="ghost" (click)="toggleFilter()"/>-->
+      </div>
+      <div class="my-2 grid grid-cols-5">
+
+        <!--Categories-->
+        <section class="m-2 p-2">
+          <p class="text-center font-bold">Categories</p>
+          <hr class="my-2">
+          <div class="grid grid-cols-5 px-2" *ngFor="let category of ['all','breakfast', 'lunch', 'dinner', 'snacks', 'drinks']">
+            <label [for]="category" class="col-span-4 font-serif">{{category}}</label>
+            <input type="checkbox" name="categories" class="scale-50" [id]="category">
+          </div>
+        </section>
+
+        <!--Cuisines-->
+        <section class="m-2 p-2">
+          <p class="text-center font-bold">Cuisines</p>
+          <hr class="my-2">
+          <div class="grid grid-cols-5 px-2" *ngFor="let cuisine of ['all','Indian', 'Italian', 'mexican', 'chinese', 'other']">
+            <label [for]="cuisine" class="col-span-4 font-serif">{{cuisine}}</label>
+            <input type="checkbox" name="cuisines" class="scale-50" [id]="cuisine">
+          </div>
+        </section>
+
+        <!--Rating-->
+        <section class="m-2 p-2">
+          <p class="text-center font-bold">Rating</p>
+          <hr class="my-2">
+          <div class="grid grid-cols-5 px-2" *ngFor="let rating of ['all','1', '2', '3', '4', '5']">
+            <label [for]="rating" class="col-span-4 font-serif">{{rating}}</label>
+            <input type="radio" name="rating" class="scale-50" [id]="rating">
+          </div>
+        </section>
+
+      </div>
+    </div>
+  
+
+  <!-- Food Cards -->
+  <div class="grid grid-cols-4 gap-4 justify-center mt-2">
+    <div *ngFor="let menu of [0,1,2,1,2,5,5,5,5,1,2,1,2,5,5,5,5,1,2,1]" >
+      <app-cards imgSrc="https://source.unsplash.com/random"></app-cards>
+    </div>
+  </div>
+
+
+</section>
